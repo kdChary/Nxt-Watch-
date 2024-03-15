@@ -2,8 +2,9 @@ import {Component} from 'react'
 import {Route, Switch} from 'react-router-dom'
 
 import './App.css'
-import Login from './components/Login'
 import ThemeContext from './context/ThemeContext'
+import ProtectedRoute from './components'
+import Login from './components/Login'
 
 // Replace your code here
 class App extends Component {
