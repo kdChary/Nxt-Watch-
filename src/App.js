@@ -3,8 +3,9 @@ import {Route, Switch} from 'react-router-dom'
 
 import './App.css'
 import ThemeContext from './context/ThemeContext'
-import ProtectedRoute from './components'
+import ProtectedRoute from './components/ProtectedRoute'
 import Login from './components/Login'
+import Header from './components/Header'
 
 // Replace your code here
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
       <ThemeContext.Provider value={{isDark, toggleTheme: this.toggleTheme}}>
         <Switch>
           <Route exact path="/login" component={Login} />
+          <ProtectedRoute exact path="/" component={Header} />
         </Switch>
       </ThemeContext.Provider>
     )
