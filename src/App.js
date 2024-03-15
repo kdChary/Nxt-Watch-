@@ -1,7 +1,29 @@
+import {Component} from 'react'
+import {Route, Switch} from 'react-router-dom'
+
 import './App.css'
 import Login from './components/Login'
+import ThemeContext from './context/ThemeContext'
 
 // Replace your code here
-const App = () => <Login />
+class App extends Component {
+  state = {isDark: true}
+
+  toggleTheme = () => {
+    this.setState(prevState => ({isDark: !prevState.isDark}))
+  }
+
+  render() {
+    const {isDark} = this.state
+
+    return (
+      <ThemeContext.Provider value={{isDark, toggleTheme: this.toggleTheme}}>
+        <Switch>
+          <Route exact path="/login" component={Login} />
+        </Switch>
+      </ThemeContext.Provider>
+    )
+  }
+}
 
 export default App

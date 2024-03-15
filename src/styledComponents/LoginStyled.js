@@ -51,6 +51,7 @@ export const Input = styled.input`
   background-color: transparent;
   font-size: 11px;
   font-weight: 500;
+  color: ${props => props.dark && '#ffffff'};
 `
 export const LoginBtn = styled.button`
   border: solid 1.3px #3b82f6;

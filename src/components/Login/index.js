@@ -96,7 +96,7 @@ class Login extends Component {
           return (
             <Container dark={isDark}>
               <FormContainer dark={isDark}>
-                <AppLogo src={imageUrl} alt="app logo" />
+                <AppLogo src={imageUrl} alt="website logo" />
                 <LoginForm
                   dark={isDark}
                   main
