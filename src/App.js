@@ -6,6 +6,7 @@ import ThemeContext from './context/ThemeContext'
 import ProtectedRoute from './components/ProtectedRoute'
 import Login from './components/Login'
 import Header from './components/Header'
+import NotFoundPage from './components/NotFoundPage'
 
 // Replace your code here
 class App extends Component {
@@ -23,6 +24,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/login" component={Login} />
           <ProtectedRoute exact path="/" component={Header} />
+          <ProtectedRoute path="/bad-path" component={NotFoundPage} />
         </Switch>
       </ThemeContext.Provider>
     )
