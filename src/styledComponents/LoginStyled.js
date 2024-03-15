@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components'
 
@@ -67,4 +68,13 @@ export const AppLogo = styled.img`
   @media (min-width: 768px) {
     width: 132px;
   }
+`
+
+export const TextContent = styled.p`
+  font-size: 11px;
+  font-weight: 500;
+  color: ${props =>
+    props.error ? '#ff0b37' : props.dark ? '#ffffff' : '#231f20'};
+  font-family: 'Roboto';
+  margin: 0;
 `

@@ -1,6 +1,6 @@
 import {Component} from 'react'
 import {Redirect} from 'react-router-dom'
-import {Cookies} from 'js-cookie'
+import Cookies from 'js-cookie'
 
 import {
   Container,
@@ -10,6 +10,7 @@ import {
   Input,
   AppLogo,
   LoginBtn,
+  TextContent,
 } from '../../styledComponents/LoginStyled'
 import ThemeContext from '../../context/ThemeContext'
 
@@ -63,7 +64,7 @@ class Login extends Component {
       <ThemeContext.Consumer>
         {value => {
           const {isDark} = value
-          const {username, password} = this.state
+          const {username, password, showError, errMsg} = this.state
           const imageUrl = isDark
             ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
             : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
@@ -104,6 +105,7 @@ class Login extends Component {
                     />
                   </LoginForm>
                   <LoginBtn type="submit">Login</LoginBtn>
+                  {showError && <TextContent error>*{errMsg}</TextContent>}
                 </LoginForm>
               </FormContainer>
             </Container>
