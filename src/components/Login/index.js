@@ -11,11 +11,27 @@ import {
   AppLogo,
   LoginBtn,
   TextContent,
+  Checkbox,
+  CheckboxCard,
 } from '../../styledComponents/LoginStyled'
 import ThemeContext from '../../context/ThemeContext'
 
 class Login extends Component {
-  state = {username: '', password: '', showError: false, errMsg: ''}
+  state = {
+    username: '',
+    password: '',
+    showError: false,
+    errMsg: '',
+    showPassword: false,
+  }
+
+  toggleShowPassword = event => {
+    if (event.target.checked) {
+      this.setState({showPassword: true})
+    } else {
+      this.setState({showPassword: false})
+    }
+  }
 
   onChangeUsername = event => {
     this.setState({username: event.target.value})
@@ -64,10 +80,18 @@ class Login extends Component {
       <ThemeContext.Consumer>
         {value => {
           const {isDark} = value
-          const {username, password, showError, errMsg} = this.state
+          const {
+            username,
+            password,
+            showError,
+            errMsg,
+            showPassword,
+          } = this.state
           const imageUrl = isDark
             ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
             : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
+
+          const passType = showPassword ? 'text' : 'password'
 
           return (
             <Container dark={isDark}>
@@ -96,7 +120,7 @@ class Login extends Component {
                       PASSWORD
                     </Label>
                     <Input
-                      type="password"
+                      type={passType}
                       dark={isDark}
                       id="password"
                       value={password}
@@ -104,6 +128,19 @@ class Login extends Component {
                       placeholder="Password"
                     />
                   </LoginForm>
+                  <CheckboxCard>
+                    <Checkbox
+                      type="checkbox"
+                      dark={isDark}
+                      id="box"
+                      value={password}
+                      onChange={this.toggleShowPassword}
+                      placeholder="Password"
+                    />
+                    <Label dark={isDark} htmlFor="box">
+                      Show Password
+                    </Label>
+                  </CheckboxCard>
                   <LoginBtn type="submit">Login</LoginBtn>
                   {showError && <TextContent error>*{errMsg}</TextContent>}
                 </LoginForm>

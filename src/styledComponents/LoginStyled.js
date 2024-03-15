@@ -71,10 +71,20 @@ export const AppLogo = styled.img`
 `
 
 export const TextContent = styled.p`
-  font-size: 11px;
+  font-size: 9px;
   font-weight: 500;
   color: ${props =>
     props.error ? '#ff0b37' : props.dark ? '#ffffff' : '#231f20'};
   font-family: 'Roboto';
   margin: 0;
+`
+export const Checkbox = styled.input`
+  border: ${props =>
+    props.dark ? 'solid 1.5px #cdcdcd' : 'solid 1.5px #475569'};
+`
+export const CheckboxCard = styled.div`
+  align-self: center;
+  width: 90%;
+  display: flex;
+  align-items: center;
 `
