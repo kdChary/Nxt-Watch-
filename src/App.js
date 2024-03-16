@@ -7,8 +7,11 @@ import ProtectedRoute from './components/ProtectedRoute'
 import Login from './components/Login'
 import Header from './components/Header'
 import NotFoundPage from './components/NotFoundPage'
+import FailureView from './components/FailureViews/FailureView'
 
 // Replace your code here
+// TODO: add pop-ups to Navbar{ menu and logout btn/icon}.
+// TODO: add Retry method
 class App extends Component {
   state = {isDark: true}
 
@@ -25,6 +28,7 @@ class App extends Component {
           <Route exact path="/login" component={Login} />
           <ProtectedRoute exact path="/" component={Header} />
           <ProtectedRoute path="/bad-path" component={NotFoundPage} />
+          <ProtectedRoute path="/no-vid" component={FailureView} />
         </Switch>
       </ThemeContext.Provider>
     )
