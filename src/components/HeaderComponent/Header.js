@@ -5,7 +5,7 @@ import {FiSun, FiLogOut} from 'react-icons/fi'
 import {IoIosMoon} from 'react-icons/io'
 import {TiThMenu} from 'react-icons/ti'
 
-import ThemeContext from '../context/ThemeContext'
+import ThemeContext from '../../context/ThemeContext'
 import {
   Navbar,
   NavLogo,
@@ -13,7 +13,7 @@ import {
   NavIcons,
   LogoutBtn,
   ProfileImg,
-} from '../styledComponents/HeaderStyling'
+} from '../../styledComponents/HeaderStyling'
 
 const Header = props => (
   <ThemeContext.Consumer>

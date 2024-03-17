@@ -1,11 +1,11 @@
 import {Component} from 'react'
-import {Route, Switch} from 'react-router-dom'
+import {Route, Switch, Redirect} from 'react-router-dom'
 
 import './App.css'
 import ThemeContext from './context/ThemeContext'
 import ProtectedRoute from './components/ProtectedRoute'
 import Login from './components/Login'
-import Header from './components/Header'
+import Header from './components/HeaderComponent/Header'
 import NotFoundPage from './components/NotFoundPage'
 import FailureView from './components/FailureViews/FailureView'
 
@@ -27,8 +27,9 @@ class App extends Component {
         <Switch>
           <Route exact path="/login" component={Login} />
           <ProtectedRoute exact path="/" component={Header} />
-          <ProtectedRoute path="/bad-path" component={NotFoundPage} />
+          <ProtectedRoute path="/not-found" component={NotFoundPage} />
           <ProtectedRoute path="/no-vid" component={FailureView} />
+          <Redirect to="/not-found" />
         </Switch>
       </ThemeContext.Provider>
     )

@@ -5,7 +5,7 @@ import {
   TextContent,
 } from '../styledComponents/NotfoundStyling'
 import ThemeContext from '../context/ThemeContext'
-import Header from './Header'
+import Header from './HeaderComponent/Header'
 
 const NotFoundPage = () => (
   <ThemeContext.Consumer>
