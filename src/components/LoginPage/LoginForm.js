@@ -13,6 +13,7 @@ import {
   Input,
   Label,
   LoginBtn,
+  ErrorMsg,
 } from './StyledLogin'
 
 class LoginForm extends Component {
@@ -146,7 +147,7 @@ class LoginForm extends Component {
           {this.renderPasswordInput()}
           {this.renderShowPassword()}
           <LoginBtn type="submit"> Login </LoginBtn>
-          {showError && <span>*{errorMsg}</span>}
+          {showError && <ErrorMsg>*{errorMsg}</ErrorMsg>}
         </Form>
       </>
     )

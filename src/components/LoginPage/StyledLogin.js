@@ -89,3 +89,10 @@ export const LoginBtn = styled.button`
   color: #ffffff;
   align-self: stretch;
 `
+export const ErrorMsg = styled.p`
+  color: #ff0b37;
+  font-weight: 600;
+  font-size: 9px;
+  font-family: 'Roboto';
+  margin-top: 0;
+`
