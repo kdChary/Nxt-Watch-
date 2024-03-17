@@ -6,6 +6,7 @@ import {
 } from '../styledComponents/NotfoundStyling'
 import ThemeContext from '../context/ThemeContext'
 import Header from './HeaderComponent/Header'
+import SideBar from './HeaderComponent/SideBar'
 
 const NotFoundPage = () => (
   <ThemeContext.Consumer>
@@ -20,6 +21,7 @@ const NotFoundPage = () => (
           <Container dark={isDark}>
             <NotFoundImg src={imageUrl} alt="notfound" dark={isDark} />
             <Heading dark={isDark}>Page Not Found</Heading>
+            <SideBar />
             <TextContent dark={isDark}>
               We are sorry, the page you requested could not be found.
             </TextContent>
