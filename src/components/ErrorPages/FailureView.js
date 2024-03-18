@@ -12,7 +12,7 @@ const FailureView = () => (
   <ErrorPageContainer>
     <ErrorImg
       src="https://assets.ccbp.in/frontend/react-js/nxt-watch-failure-view-light-theme-img.png"
-      alt="no videos"
+      alt="failure view"
     />
     <ErrorHeading>Oops! Something Went Wrong</ErrorHeading>
     <ErrorText>
