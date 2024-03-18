@@ -7,8 +7,6 @@ import {
 } from './StyleErrorPages'
 import AppContext from '../../context/AppContext'
 
-// TODO: add Context && retry function/dark&light Images..
-
 const FailureView = () => (
   <AppContext.Consumer>
     {value => {
