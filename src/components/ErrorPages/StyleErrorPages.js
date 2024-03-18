@@ -51,7 +51,9 @@ export const RetryBtn = styled.button`
   border-radius: 4px;
   background-color: #4f46e5;
   color: #ffffff;
-  padding: 9px 17px;
+  padding: 7px 17px;
   font-weight: 600;
   font-size: 13px;
+  margin-top: 11px;
+  cursor: pointer;
 `
