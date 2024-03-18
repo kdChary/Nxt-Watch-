@@ -14,11 +14,8 @@ const EmptySearchResults = () => (
       src="https://assets.ccbp.in/frontend/react-js/nxt-watch-no-search-results-img.png"
       alt="no videos"
     />
-    <ErrorHeading>Oops! Something Went Wrong</ErrorHeading>
-    <ErrorText>
-      We are having some trouble to complete your request. <br />
-      Please try again.
-    </ErrorText>
+    <ErrorHeading>No Search results found</ErrorHeading>
+    <ErrorText>Try different key words or remove search filter</ErrorText>
     <RetryBtn type="button">Retry</RetryBtn>
   </ErrorPageContainer>
 )
