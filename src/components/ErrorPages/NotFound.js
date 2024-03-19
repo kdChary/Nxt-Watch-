@@ -5,6 +5,7 @@ import {
   ErrorText,
 } from './StyleErrorPages'
 import AppContext from '../../context/AppContext'
+import Header from '../Header/Header'
 
 // TODO: add Navbar and Side bar .
 
@@ -17,13 +18,16 @@ const NotFound = () => (
         : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-not-found-light-theme-img.png'
 
       return (
-        <ErrorPageContainer dark={isDark}>
-          <ErrorImg src={imageUrl} alt="Not Found" />
-          <ErrorHeading dark={isDark}>Page Not Found</ErrorHeading>
-          <ErrorText>
-            We are sorry, the page you requested could not be found
-          </ErrorText>
-        </ErrorPageContainer>
+        <>
+          <Header />
+          <ErrorPageContainer dark={isDark}>
+            <ErrorImg src={imageUrl} alt="Not Found" />
+            <ErrorHeading dark={isDark}>Page Not Found</ErrorHeading>
+            <ErrorText>
+              We are sorry, the page you requested could not be found
+            </ErrorText>
+          </ErrorPageContainer>
+        </>
       )
     }}
   </AppContext.Consumer>

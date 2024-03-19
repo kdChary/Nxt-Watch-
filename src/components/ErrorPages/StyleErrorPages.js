@@ -4,6 +4,7 @@ import styled from 'styled-components'
 export const ErrorPageContainer = styled.div`
   width: 100%;
   height: 90vh;
+  margin: 0;
   background-color: ${props => (props.dark ? '#181818' : '#f9f9f9')};
   display: flex;
   flex-direction: column;
@@ -12,7 +13,7 @@ export const ErrorPageContainer = styled.div`
   font-family: 'Roboto';
   text-align: center;
   @media screen and (min-width: 768px) {
-    width: 90%;
+    width: 100%;
   }
 `
 

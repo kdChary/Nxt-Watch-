@@ -41,7 +41,7 @@ export const OptnContainer = styled.div`
   justify-content: ${props => !props.pop && 'space-between'};
   align-items: ${props => !props.pop && 'center'};
   @media screen and (min-width: 768px) {
-    width: 23%;
+    width: 30%;
     justify-content: space-around;
   }
 `
@@ -49,7 +49,7 @@ export const OptnContainer = styled.div`
 export const NavOptionsList = styled.ul`
   height: ${props => props.pop && '153px'};
   //   padding: ${props => props.pop && '4px'};
-  width: ${props => (props.pop ? '230px' : '125px')};
+  width: ${props => (props.pop ? '230px' : '70%')};
 
   @media screen and (max-width: 767px) {
     width: 100%;
@@ -85,6 +85,9 @@ export const NavOptnBtn = styled.button`
   color: ${props => (props.dark ? '#ffffff' : '#231f20')};
 outline: none;
   cursor: pointer;
+  }
+  @media screen and (min-width:767px){
+      font-size: 27px;
   }
 `
 
@@ -133,7 +136,9 @@ export const PopupBtn = styled.button`
 `
 
 export const PopupText = styled.p`
-  font-size: 15px;
+  font-size: ${props => (props.logout ? '19px' : '15px')};
+  font-weight: ${props => props.logout && 600};
+  margin-bottom: ${props => props.logout && '11px'};
   color: ${props => (props.dark ? '#ffffff' : '#231f20')};
   margin: 1px 0 -2px 5px;
 `
@@ -142,6 +147,7 @@ export const PopupText = styled.p`
 
 export const PopLogoutCard = styled(OptnContainer)`
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-between;
   padding: 25px 13px;
   @media screen and (min-width: 768px) {

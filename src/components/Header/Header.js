@@ -27,7 +27,7 @@ import {
   ModelLogoOutBtn,
 } from './StyleHeader'
 
-// TODO: add Link, logout-trigger,
+// TODO: add ActiveTab function.,
 
 const Header = () => {
   const onClickLogout = props => {
@@ -45,7 +45,7 @@ const Header = () => {
         return (
           <Popup
             trigger={
-              <NavOptnBtn type="button">
+              <NavOptnBtn dark={isDark} type="button">
                 <TiThMenu />
               </NavOptnBtn>
             }
@@ -110,6 +110,9 @@ const Header = () => {
     >
       {close => (
         <PopLogoutCard pop dark={isDark}>
+          <PopupText dark={isDark} logout>
+            Are you sure you want to logout?
+          </PopupText>
           <ModelLogoOutBtn outline type="button" onClick={close}>
             Cancel
           </ModelLogoOutBtn>
@@ -143,18 +146,21 @@ const Header = () => {
     </Popup>
   )
 
-  const renderNavbar = isDark => {
+  const renderNavbar = (isDark, changeTheme) => {
     const logoUrl = isDark
       ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
       : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
 
     return (
       <Navbar dark={isDark}>
-        <NavImg src={logoUrl} alt="website logo" />
+        <LinkItem to="/">
+          <NavImg src={logoUrl} alt="website logo" />
+        </LinkItem>
+
         <OptnContainer>
           <NavOptionsList>
             <NavOptionItem>
-              <NavOptnBtn type="button" dark={isDark}>
+              <NavOptnBtn type="button" dark={isDark} onClick={changeTheme}>
                 {isDark ? <FiSun /> : <IoIosMoon />}
               </NavOptnBtn>
             </NavOptionItem>
@@ -183,9 +189,8 @@ const Header = () => {
   return (
     <AppContext.Consumer>
       {value => {
-        const {isDark} = value
-        console.log(isDark)
-        return <>{renderNavbar(isDark)}</>
+        const {isDark, changeTheme} = value
+        return <>{renderNavbar(isDark, changeTheme)}</>
       }}
     </AppContext.Consumer>
   )
