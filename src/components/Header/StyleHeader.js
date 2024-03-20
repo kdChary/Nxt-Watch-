@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
@@ -33,7 +34,9 @@ export const OptnContainer = styled.div`
   border: ${props => props.pop && !props.dark && 'solid 2.7px #f1f5f8'};
   border-radius: ${props => props.pop && '7px'};
   box-shadow: ${props => props.pop && '0 4px 16px 0 #94a3b8'};
-  background-color: ${props => props.dark && props.pop && '#212121'};
+  background-color: ${props =>
+    (props.dark && props.pop && '#212121') ||
+    (props.pop && !props.dark && '#ffffff')};
   align-self: stretch;
   width: ${props => (props.pop ? '230px' : '35%')};
   display: flex;
@@ -127,17 +130,23 @@ export const PopupBtn = styled.button`
   outline: none;
   color: #94a3b8;
   cursor: pointer;
-  &:hover,
-  &:active {
-    color: #ff0000;
-    background-color: ${props => (props.dark ? '#383838' : '#f1f5f9')};
-    font-weight: 700;
-  }
+  color: ${props => props.active && '#ff0000'};
+  background-color: ${props =>
+    props.active ? (props.dark ? '#383838' : '#f1f5f9') : ''};
+  font-weight: ${props => props.active && '700'};
+  //   &:hover,
+  //   &:active {
+  //   }
 `
 
 export const PopupText = styled.p`
-  font-size: ${props => (props.logout ? '19px' : '15px')};
+  font-size: ${props => (props.logout ? '15px' : '15px')};
+  @media screen and (min-width: 768px) {
+    font-size: ${props => (props.logout ? '19px' : '15px')};
+  }
+  font-family: 'Roboto';
   font-weight: ${props => props.logout && 600};
+  text-align: ${props => props.logout && 'center'};
   margin-bottom: ${props => props.logout && '11px'};
   color: ${props => (props.dark ? '#ffffff' : '#231f20')};
   margin: 1px 0 -2px 5px;
@@ -146,13 +155,19 @@ export const PopupText = styled.p`
 // Styling Logout popup
 
 export const PopLogoutCard = styled(OptnContainer)`
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 25px 13px;
   @media screen and (min-width: 768px) {
     width: 430px;
   }
+  height: 175px;
+`
+export const PopBtnsCard = styled.div`
+  display: flex;
+  //   flex-direction: row;
+  //   flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
 `
 export const ModelLogoOutBtn = styled(LogoutBtn)`
   display: block;
@@ -161,4 +176,5 @@ export const ModelLogoOutBtn = styled(LogoutBtn)`
   background-color: ${props => (props.outline ? 'transparent' : '#4f46e5')};
   color: ${props => (props.outline ? '#7e858e' : '#ffffff')};
   width: 45%;
+  height: 32px;
 `

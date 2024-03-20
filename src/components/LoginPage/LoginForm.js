@@ -81,6 +81,79 @@ class LoginForm extends Component {
     }
   }
 
+  renderUsernameInput = isDark => {
+    const {username} = this.state
+    return (
+      <InputContainer dark={isDark}>
+        <Label dark={isDark} htmlFor="username">
+          USERNAME
+        </Label>
+        <Input
+          dark={isDark}
+          id="username"
+          type="text"
+          value={username}
+          onChange={this.onChangeUsername}
+          placeholder="Username"
+        />
+      </InputContainer>
+    )
+  }
+
+  renderPasswordInput = isDark => {
+    const {password, inputType} = this.state
+    return (
+      <InputContainer dark={isDark}>
+        <Label dark={isDark} htmlFor="password">
+          PASSWORD
+        </Label>
+        <Input
+          dark={isDark}
+          id="password"
+          type={inputType}
+          value={password}
+          onChange={this.onChangePassword}
+          placeholder="Password"
+        />
+      </InputContainer>
+    )
+  }
+
+  renderShowPassword = isDark => (
+    <InputContainer dark={isDark} checkbox>
+      <Input
+        dark={isDark}
+        id="showPassword"
+        type="checkbox"
+        onChange={this.onShowPassword}
+      />
+      <Label dark={isDark} checkbox htmlFor="showPassword">
+        Show Password
+      </Label>
+    </InputContainer>
+  )
+
+  renderLoginForm = isDark => {
+    const {showError, errorMsg} = this.state
+
+    return (
+      <>
+        <WebsiteLogo
+          src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
+          alt="website logo"
+        />
+
+        <Form onSubmit={this.onFormSubmit} id="loginForm">
+          {this.renderUsernameInput(isDark)}
+          {this.renderPasswordInput(isDark)}
+          {this.renderShowPassword(isDark)}
+          <LoginBtn type="submit"> Login </LoginBtn>
+          {showError && <ErrorMsg>*{errorMsg}</ErrorMsg>}
+        </Form>
+      </>
+    )
+  }
+
   render() {
     const accessToken = Cookies.get('jwt_token')
 
@@ -91,83 +164,11 @@ class LoginForm extends Component {
       <AppContext.Consumer>
         {value => {
           const {isDark} = value
-          const renderUsernameInput = () => {
-            const {username} = this.state
-            return (
-              <InputContainer dark={isDark}>
-                <Label dark={isDark} htmlFor="username">
-                  USERNAME
-                </Label>
-                <Input
-                  dark={isDark}
-                  id="username"
-                  type="text"
-                  value={username}
-                  onChange={this.onChangeUsername}
-                  placeholder="Username"
-                />
-              </InputContainer>
-            )
-          }
-
-          const renderPasswordInput = () => {
-            const {password, inputType} = this.state
-            return (
-              <InputContainer dark={isDark}>
-                <Label dark={isDark} htmlFor="password">
-                  PASSWORD
-                </Label>
-                <Input
-                  dark={isDark}
-                  id="password"
-                  type={inputType}
-                  value={password}
-                  onChange={this.onChangePassword}
-                  placeholder="Password"
-                />
-              </InputContainer>
-            )
-          }
-
-          const renderShowPassword = () => (
-            <InputContainer dark={isDark} checkbox>
-              <Input
-                dark={isDark}
-                id="showPassword"
-                type="checkbox"
-                onChange={this.onShowPassword}
-              />
-              <Label dark={isDark} checkbox htmlFor="showPassword">
-                Show Password
-              </Label>
-            </InputContainer>
-          )
-
-          const renderLoginForm = () => {
-            const {showError, errorMsg} = this.state
-
-            return (
-              <>
-                <WebsiteLogo
-                  src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-                  alt="website logo"
-                />
-
-                <Form onSubmit={this.onFormSubmit} id="loginForm">
-                  {renderUsernameInput()}
-                  {renderPasswordInput()}
-                  {renderShowPassword()}
-                  <LoginBtn type="submit"> Login </LoginBtn>
-                  {showError && <ErrorMsg>*{errorMsg}</ErrorMsg>}
-                </Form>
-              </>
-            )
-          }
 
           return (
             <LoginContainer dark={isDark}>
               <ResponsiveContainer dark={isDark}>
-                {renderLoginForm()}
+                {this.renderLoginForm(isDark)}
               </ResponsiveContainer>
             </LoginContainer>
           )

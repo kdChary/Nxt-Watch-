@@ -1,32 +1,41 @@
-import {Component} from 'react' // Redirect
-import {Route, Switch} from 'react-router-dom'
+import {Component} from 'react'
+import {Route, Switch, Redirect} from 'react-router-dom'
 
 import './App.css'
 import LoginForm from './components/LoginPage/LoginForm'
 import NotFound from './components/ErrorPages/NotFound'
-import NoSavedVideos from './components/ErrorPages/NoSavedVideos'
-import Header from './components/Header/Header'
 import AppContext from './context/AppContext'
 
 // Replace your code here
 // TODO: add pop-ups to Navbar{ menu and logout btn/icon}.
 // TODO: add Retry method
 class App extends Component {
-  state = {isDark: false}
+  state = {isDark: false, activeTab: 'HOME', savedVideosList: []}
 
   changeTheme = () => {
     this.setState(prevState => ({isDark: !prevState.isDark}))
   }
 
+  changeTab = val => {
+    this.setState({activeTab: val})
+  }
+
   render() {
-    const {isDark} = this.state
+    const {isDark, activeTab, savedVideosList} = this.state
     return (
-      <AppContext.Provider value={{isDark, changeTheme: this.changeTheme}}>
+      <AppContext.Provider
+        value={{
+          isDark,
+          activeTab,
+          savedVideosList,
+          changeTab: this.changeTab,
+          changeTheme: this.changeTheme,
+        }}
+      >
         <Switch>
           <Route exact path="/login" component={LoginForm} />
           <Route path="/not-found" component={NotFound} />
-          <Route exact path="/error" component={NoSavedVideos} />
-          <Route exact path="/1" component={Header} />
+          <Redirect to="/not-found" component={NotFound} />
         </Switch>
       </AppContext.Provider>
     )

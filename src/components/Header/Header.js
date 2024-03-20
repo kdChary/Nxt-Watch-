@@ -24,23 +24,36 @@ import {
   PopupBtn,
   PopupText,
   PopLogoutCard,
+  PopBtnsCard,
   ModelLogoOutBtn,
 } from './StyleHeader'
 
 // TODO: add ActiveTab function.,
 
-const Header = () => {
-  const onClickLogout = props => {
+const Header = props => {
+  const onClickLogout = () => {
     const {history} = props
+    history.replace('/login')
     Cookies.remove('jwt_token')
-
-    history.replace('/')
   }
 
   const renderPopUpMenu = () => (
     <AppContext.Consumer>
       {value => {
-        const {isDark} = value
+        const {isDark, activeTab, changeTab} = value
+
+        const setHome = () => {
+          changeTab('HOME')
+        }
+        const setTrending = () => {
+          changeTab('TRENDING')
+        }
+        const setGaming = () => {
+          changeTab('GAMING')
+        }
+        const setSavedVideos = () => {
+          changeTab('SAVED_VIDEOS')
+        }
 
         return (
           <Popup
@@ -59,7 +72,11 @@ const Header = () => {
                 <NavOptionsList pop>
                   <LinkItem to="/">
                     <NavOptionItem pop>
-                      <PopupBtn dark={isDark}>
+                      <PopupBtn
+                        active={activeTab === 'HOME'}
+                        dark={isDark}
+                        onClick={setHome}
+                      >
                         <TiHome /> <PopupText dark={isDark}> Home</PopupText>
                       </PopupBtn>
                     </NavOptionItem>
@@ -67,7 +84,11 @@ const Header = () => {
 
                   <LinkItem to="/trending">
                     <NavOptionItem pop>
-                      <PopupBtn dark={isDark}>
+                      <PopupBtn
+                        dark={isDark}
+                        active={activeTab === 'TRENDING'}
+                        onClick={setTrending}
+                      >
                         <HiFire /> <PopupText dark={isDark}>Trending</PopupText>
                       </PopupBtn>
                     </NavOptionItem>
@@ -75,7 +96,11 @@ const Header = () => {
 
                   <LinkItem to="/gaming">
                     <NavOptionItem pop>
-                      <PopupBtn dark={isDark}>
+                      <PopupBtn
+                        dark={isDark}
+                        active={activeTab === 'GAMING'}
+                        onClick={setGaming}
+                      >
                         <IoLogoGameControllerB />
                         <PopupText dark={isDark}>Gaming</PopupText>
                       </PopupBtn>
@@ -84,7 +109,11 @@ const Header = () => {
 
                   <LinkItem to="/saved-videos">
                     <NavOptionItem pop>
-                      <PopupBtn dark={isDark}>
+                      <PopupBtn
+                        dark={isDark}
+                        active={activeTab === 'SAVED_VIDEOS'}
+                        onClick={setSavedVideos}
+                      >
                         <RiMenuAddFill />
                         <PopupText dark={isDark}>Saved Videos</PopupText>
                       </PopupBtn>
@@ -113,12 +142,15 @@ const Header = () => {
           <PopupText dark={isDark} logout>
             Are you sure you want to logout?
           </PopupText>
-          <ModelLogoOutBtn outline type="button" onClick={close}>
-            Cancel
-          </ModelLogoOutBtn>
-          <ModelLogoOutBtn type="button" onClick={onClickLogout}>
-            Confirm
-          </ModelLogoOutBtn>
+
+          <PopBtnsCard>
+            <ModelLogoOutBtn outline type="button" onClick={close}>
+              Cancel
+            </ModelLogoOutBtn>
+            <ModelLogoOutBtn type="button" onClick={onClickLogout}>
+              Confirm
+            </ModelLogoOutBtn>
+          </PopBtnsCard>
         </PopLogoutCard>
       )}
     </Popup>
