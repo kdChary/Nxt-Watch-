@@ -1,10 +1,12 @@
 import {Component} from 'react'
 import {Route, Switch, Redirect} from 'react-router-dom'
 
+import AppContext from './context/AppContext'
+
 import './App.css'
 import LoginForm from './components/LoginPage/LoginForm'
 import NotFound from './components/ErrorPages/NotFound'
-import AppContext from './context/AppContext'
+import ProtectedRoute from './components/ProtectedRoute'
 
 // Replace your code here
 // TODO: add pop-ups to Navbar{ menu and logout btn/icon}.
@@ -34,7 +36,7 @@ class App extends Component {
       >
         <Switch>
           <Route exact path="/login" component={LoginForm} />
-          <Route path="/not-found" component={NotFound} />
+          <ProtectedRoute exact path="/not-found" component={NotFound} />
           <Redirect to="/not-found" component={NotFound} />
         </Switch>
       </AppContext.Provider>
