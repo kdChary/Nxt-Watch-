@@ -135,13 +135,13 @@ class LoginForm extends Component {
 
   renderLoginForm = isDark => {
     const {showError, errorMsg} = this.state
+    const logoUrl = isDark
+      ? 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'
+      : 'https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'
 
     return (
       <>
-        <WebsiteLogo
-          src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-          alt="website logo"
-        />
+        <WebsiteLogo src={logoUrl} alt="website logo" />
 
         <Form onSubmit={this.onFormSubmit} id="loginForm">
           {this.renderUsernameInput(isDark)}
