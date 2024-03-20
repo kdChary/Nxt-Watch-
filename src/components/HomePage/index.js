@@ -5,6 +5,8 @@ import {BiSearchAlt} from 'react-icons/bi'
 
 import Banner from '../Banner/Banner'
 import Header from '../Header/Header'
+import VideoItem from '../VideoItem'
+import EmptySearchResults from '../ErrorPages/EpmtySearchResults'
 import AppContext from '../../context/AppContext'
 
 import {
@@ -12,6 +14,7 @@ import {
   FilterInput,
   SearchBtn,
   ResponsiveContainer,
+  VideosList,
 } from './styledHome'
 
 const apiFetchStatus = {
@@ -87,6 +90,22 @@ class Home extends Component {
     this.setState({fetchedData: filteredVideos}, this.fetchVideos)
   }
 
+  renderFetchedVideos = isDark => {
+    const {fetchedData} = this.state
+
+    if (fetchedData.length < 1) {
+      return <EmptySearchResults retry={this.onClickRetry} />
+    }
+
+    return (
+      <VideosList dark={isDark}>
+        {fetchedData.map(video => (
+          <VideoItem key={video.id} videoData={video} isDark={isDark} />
+        ))}
+      </VideosList>
+    )
+  }
+
   renderSearchFilter = isDark => {
     const {searchInput} = this.state
 
@@ -107,7 +126,7 @@ class Home extends Component {
 
   render() {
     const {fetchedData} = this.state
-    console.log(fetchedData)
+    // console.log(fetchedData)
 
     return (
       <AppContext.Consumer>
@@ -120,6 +139,7 @@ class Home extends Component {
               <ResponsiveContainer dark={isDark}>
                 <Banner />
                 {this.renderSearchFilter(isDark)}
+                {this.renderFetchedVideos(isDark)}
               </ResponsiveContainer>
             </>
           )
