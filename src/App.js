@@ -36,6 +36,7 @@ class App extends Component {
       >
         <Switch>
           <Route exact path="/login" component={LoginForm} />
+          {/* <Route exact path="/" component={Banner} /> */}
           <ProtectedRoute exact path="/not-found" component={NotFound} />
           <Redirect to="/not-found" component={NotFound} />
         </Switch>
