@@ -5,11 +5,11 @@ import AppContext from './context/AppContext'
 
 import './App.css'
 import LoginForm from './components/LoginPage/LoginForm'
-import NotFound from './components/ErrorPages/NotFound'
 import ProtectedRoute from './components/ProtectedRoute'
+import Home from './components/HomePage'
+import NotFound from './components/ErrorPages/NotFound'
 
-// Replace your code here
-// TODO: add pop-ups to Navbar{ menu and logout btn/icon}.
+// TODO: Logout PopUp sm Misbehaving.
 // TODO: add Retry method
 class App extends Component {
   state = {isDark: false, activeTab: 'HOME', savedVideosList: []}
@@ -36,7 +36,7 @@ class App extends Component {
       >
         <Switch>
           <Route exact path="/login" component={LoginForm} />
-          {/* <Route exact path="/" component={Banner} /> */}
+          <Route exact path="/" component={Home} />
           <ProtectedRoute exact path="/not-found" component={NotFound} />
           <Redirect to="/not-found" component={NotFound} />
         </Switch>
