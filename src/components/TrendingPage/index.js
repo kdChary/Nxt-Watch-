@@ -7,6 +7,7 @@ import Header from '../Header/Header'
 import FailureView from '../ErrorPages/FailureView'
 import AppContext from '../../context/AppContext'
 import Sidebar from '../Header/Sidebar'
+import TrendingItem from '../TrendingItem'
 
 import {
   ResponsivePage,
@@ -75,15 +76,15 @@ class Trending extends Component {
 
   renderFailureView = () => <FailureView retry={this.onClickRetry} />
 
-  renderLoadingView = () => (
-    <LoaderContainer>
+  renderLoadingView = isDark => (
+    <LoaderContainer dark={isDark}>
       <div className="loader-container" data-testid="loader">
         <Loader
           type="ThreeDots"
           height="80"
           width="80"
           radius={9}
-          color="#3b82f6" //  {isDark ? '#4fa94d' : '#3b82f6'}
+          color={isDark ? '#4fa94d' : '#3b82f6'}
         />
       </div>
     </LoaderContainer>
@@ -103,7 +104,9 @@ class Trending extends Component {
         </TrendingHeader>
 
         <TrendingVideosList>
-          <li>Map the fetched data!!</li>
+          {trendingData.map(video => (
+            <TrendingItem key={video.id} videoData={video} isDark={isDark} />
+          ))}
         </TrendingVideosList>
       </ResponsivePage>
     )

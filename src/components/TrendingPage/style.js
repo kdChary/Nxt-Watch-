@@ -47,7 +47,7 @@ export const TrendingVideosList = styled.ul`
   padding-left: 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   width: 100%;
   overflow: auto;
   scroll-behavior: smooth;
