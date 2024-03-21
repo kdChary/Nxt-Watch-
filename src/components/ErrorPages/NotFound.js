@@ -1,4 +1,5 @@
 import {
+  ResponsiveSection,
   ErrorPageContainer,
   ErrorImg,
   ErrorHeading,
@@ -6,6 +7,7 @@ import {
 } from './StyleErrorPages'
 import AppContext from '../../context/AppContext'
 import Header from '../Header/Header'
+import Sidebar from '../Header/Sidebar'
 
 // TODO: add Navbar and Side bar .
 
@@ -20,13 +22,16 @@ const NotFound = () => (
       return (
         <>
           <Header />
-          <ErrorPageContainer dark={isDark}>
-            <ErrorImg src={imageUrl} alt="Not Found" />
-            <ErrorHeading dark={isDark}>Page Not Found</ErrorHeading>
-            <ErrorText>
-              We are sorry, the page you requested could not be found
-            </ErrorText>
-          </ErrorPageContainer>
+          <ResponsiveSection>
+            <Sidebar />
+            <ErrorPageContainer dark={isDark}>
+              <ErrorImg src={imageUrl} alt="Not Found" />
+              <ErrorHeading dark={isDark}>Page Not Found</ErrorHeading>
+              <ErrorText>
+                We are sorry, the page you requested could not be found
+              </ErrorText>
+            </ErrorPageContainer>
+          </ResponsiveSection>
         </>
       )
     }}

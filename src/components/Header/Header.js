@@ -9,7 +9,6 @@ import {TiThMenu, TiHome} from 'react-icons/ti'
 import {HiFire} from 'react-icons/hi'
 import {RiMenuAddFill} from 'react-icons/ri'
 
-import './index.css'
 import AppContext from '../../context/AppContext'
 import {
   LinkItem,

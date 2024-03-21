@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const ErrorPageContainer = styled.div`
   width: 100%;
-  height: 90vh;
+  height: 100vh;
   margin: 0;
   background-color: ${props => (props.dark ? '#181818' : '#f9f9f9')};
   display: flex;
@@ -12,9 +12,14 @@ export const ErrorPageContainer = styled.div`
   justify-content: center;
   font-family: 'Roboto';
   text-align: center;
-  @media screen and (min-width: 768px) {
-    width: 100%;
-  }
+  //   @media screen and (min-width: 768px) {
+  //     width: 90%;
+  //   }
+`
+
+export const ResponsiveSection = styled.div`
+  display: flex;
+  //   flex-direction: row;
 `
 
 export const ErrorImg = styled.img`

@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom'
 // Styling Link component
 export const LinkItem = styled(Link)`
   text-decoration: none;
+  width: 100%;
 `
 
 export const Navbar = styled.nav`
@@ -18,6 +19,38 @@ export const Navbar = styled.nav`
   align-items: center;
   padding: 3px 13px;
   font-family: 'Roboto';
+`
+//  Side bar styling..
+
+export const SideNavbar = styled(Navbar)`
+  min-height: 100vh;
+  width: 30vw;
+  position: sticky;
+  border: none;
+  flex-direction: column;
+  padding: 23px 0;
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
+`
+export const SocialSection = styled.div`
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: transparent;
+  font-family: 'Roboto';
+`
+export const SideText = styled.p`
+  font-weight: ${props => (props.main ? '700' : '500')};
+  font-size: ${props => (props.main ? '15px' : '11px')};
+  font-size: ${props => props.lg && '19px'};
+  color: ${props => (props.dark ? '#ffffff' : '#00306e')};
+`
+export const SocialIconsCard = styled.div`
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
 `
 
 export const NavImg = styled.img`
@@ -35,8 +68,8 @@ export const OptnContainer = styled.div`
   border-radius: ${props => props.pop && '7px'};
   box-shadow: ${props => props.pop && '0 4px 16px 0 #94a3b8'};
   background-color: ${props =>
-    (props.dark && props.pop && '#212121') ||
-    (props.pop && !props.dark && '#ffffff')};
+    (props.dark && (props.pop || props.side) && '#212121') ||
+    ((props.pop || props.side) && !props.dark && '#ffffff')};
   align-self: stretch;
   width: ${props => (props.pop ? '230px' : '35%')};
   display: flex;
@@ -44,15 +77,17 @@ export const OptnContainer = styled.div`
   justify-content: ${props => !props.pop && 'space-between'};
   align-items: ${props => !props.pop && 'center'};
   @media screen and (min-width: 768px) {
-    width: 30%;
-    justify-content: space-around;
+    width: ${props => (props.side ? '100%' : '35%')};
+    // border: ${props => props.side && 'solid 1px #000000'};
+    // justify-content: space-around;
   }
 `
 
 export const NavOptionsList = styled.ul`
-  height: ${props => props.pop && '153px'};
-  //   padding: ${props => props.pop && '4px'};
-  width: ${props => (props.pop ? '230px' : '70%')};
+  height: ${props => (props.pop && '153px') || (props.side && '203px')};
+  padding: ${props => props.side && '0'};
+  width: ${props => (props.pop ? '230px' : props.side ? '100%' : '70%')};
+  //   border: solid 1px #4f4556;
 
   @media screen and (max-width: 767px) {
     width: 100%;
@@ -60,14 +95,15 @@ export const NavOptionsList = styled.ul`
 
   padding-left: 0;
   display: flex;
-  flex-direction: ${props => props.pop && 'column'};
+  flex-direction: ${props => (props.pop || props.side) && 'column'};
   justify-content: space-between;
-  align-items: ${props => !props.pop && 'center'};
+  align-items: ${props => !(props.pop || props.side) && 'center'};
 `
 
 export const NavOptionItem = styled.li`
   list-style-type: none;
   //   border: solid 1px #4f4556;
+  width: ${props => props.side && '100%'};
   display: ${props =>
     (props.hide && 'none') || (props.sm && 'block') || (props.pop && 'flex')};
 
@@ -108,6 +144,7 @@ export const LogoutBtn = styled.button`
   @media screen and (max-width: 767px) {
     display: none;
   }
+  margin-left: 11px;
 `
 
 // Popup content Styling...
