@@ -1,4 +1,5 @@
 import {formatDistanceToNow} from 'date-fns'
+import {BsDot} from 'react-icons/bs'
 
 import {
   LinkItem,
@@ -41,10 +42,12 @@ const VideoItem = props => {
             <ItemDetailsCard>
               <VideoText dark={isDark}>{channelName}</VideoText>
               <VideoDetailsList>
-                <VideoText dark={isDark} as="li" sub>
+                <VideoText dark={isDark} sub>
+                  <BsDot size="21" />
                   {views}
                 </VideoText>
-                <VideoText dark={isDark} as="li" sub>
+                <VideoText dark={isDark} sub>
+                  <BsDot size="21" />
                   {newDate} ago
                 </VideoText>
               </VideoDetailsList>

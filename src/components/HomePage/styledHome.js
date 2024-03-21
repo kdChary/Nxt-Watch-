@@ -1,5 +1,11 @@
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components'
+import Loader from 'react-loader-spinner'
+
+export const LoaderView = styled(Loader)`
+  font-size: 94px;
+  color: ${props => (props.dark ? '#3b82f6' : '#cbdcbd')};
+`
 
 // styling videos filter input field..
 export const SearchCard = styled.div`
@@ -19,12 +25,13 @@ export const FilterInput = styled.input`
   border-right: solid 2.3px #475569;
   background-color: transparent;
   width: 90%;
-  color: #cdcdcd;
+  color: ${props => (props.dark ? '#cdcdcd' : '#1e2379')};
   font-family: 'Roboto';
   font-weight: 600;
   font-size: 13px;
   align-self: stretch;
   padding-left: 13px;
+  outline: none;
 `
 
 export const SearchBtn = styled.button`
@@ -43,10 +50,11 @@ export const SearchBtn = styled.button`
 
 export const ResponsiveContainer = styled.div`
   width: 100%;
-  min-height: 90vh;
+  min-height: ${props => (props.loader ? '100vh' : '90vh')};
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: ${props => props.loader && 'center'};
+  align-items: ${props => props.loader && 'center'};
   background-color: ${props => (props.dark ? '#181818' : '#f1f5f9')};
 `
 

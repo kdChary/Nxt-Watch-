@@ -22,13 +22,18 @@ class Banner extends Component {
 
     if (showBanner) {
       return (
-        <BannerContainer>
+        <BannerContainer data-testid="banner">
           <LogoCard>
             <AppLogo
               src="https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png"
-              alt="website logo"
+              alt="nxt watch logo"
             />
-            <BannerBtn cross type="button" onClick={this.hideBanner}>
+            <BannerBtn
+              cross
+              type="button"
+              onClick={this.hideBanner}
+              data-testid="close"
+            >
               <IoIosClose size="23" color="#181818" />
             </BannerBtn>
           </LogoCard>

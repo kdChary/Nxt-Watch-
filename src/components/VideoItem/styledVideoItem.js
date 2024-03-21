@@ -35,6 +35,12 @@ export const VideoText = styled.p`
   font-family: 'Roboto';
   font-weight: 600;
   color: ${props => (props.dark ? '#cccccc' : '#424242')};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media screen and (min-width: 768px) {
+    font-size: ${props => (props.main ? '17px' : '13px')};
+  }
 `
 
 export const VideoDetailsList = styled.ul`

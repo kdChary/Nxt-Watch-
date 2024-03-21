@@ -6,6 +6,7 @@ import {BiSearchAlt} from 'react-icons/bi'
 import Banner from '../Banner/Banner'
 import Header from '../Header/Header'
 import VideoItem from '../VideoItem'
+import FailureView from '../ErrorPages/FailureView'
 import EmptySearchResults from '../ErrorPages/EpmtySearchResults'
 import AppContext from '../../context/AppContext'
 
@@ -15,6 +16,7 @@ import {
   SearchBtn,
   ResponsiveContainer,
   VideosList,
+  LoaderView,
 } from './styledHome'
 
 const apiFetchStatus = {
@@ -23,6 +25,7 @@ const apiFetchStatus = {
   success: 'SUCCESS',
   failure: 'FAILURE',
 }
+
 class Home extends Component {
   state = {
     responseStatus: apiFetchStatus.initial,
@@ -117,35 +120,81 @@ class Home extends Component {
           placeholder="Search"
           onChange={this.searchInputChange}
         />
-        <SearchBtn type="button" dark={isDark} onClick={this.filterResults}>
+        <SearchBtn
+          type="button"
+          dark={isDark}
+          onClick={this.filterResults}
+          data-testid="searchButton"
+        >
           <BiSearchAlt />
         </SearchBtn>
       </SearchCard>
     )
   }
 
+  renderFailureView = () => (
+    <>
+      <Header />
+      <Banner />
+      <FailureView retry={this.onClickRetry} />
+    </>
+  )
+
+  renderLoadingView = () => (
+    <AppContext.Consumer>
+      {value => {
+        const {isDark} = value
+        return (
+          <ResponsiveContainer
+            dark={isDark}
+            loader
+            className="loader-container"
+            data-testid="loader"
+          >
+            <LoaderView
+              type="ThreeDots"
+              height="80"
+              width="80"
+              radius={9}
+              color={isDark ? '#4fa94d' : '#3b82f6'}
+            />
+          </ResponsiveContainer>
+        )
+      }}
+    </AppContext.Consumer>
+  )
+
+  renderHomePage = () => (
+    <AppContext.Consumer>
+      {value => {
+        const {isDark} = value
+        return (
+          <>
+            <Header />
+            <ResponsiveContainer dark={isDark}>
+              <Banner />
+              {this.renderSearchFilter(isDark)}
+              {this.renderFetchedVideos(isDark)}
+            </ResponsiveContainer>
+          </>
+        )
+      }}
+    </AppContext.Consumer>
+  )
+
   render() {
-    const {fetchedData} = this.state
-    // console.log(fetchedData)
+    const {responseStatus} = this.state
 
-    return (
-      <AppContext.Consumer>
-        {value => {
-          const {isDark} = value
-
-          return (
-            <>
-              <Header />
-              <ResponsiveContainer dark={isDark}>
-                <Banner />
-                {this.renderSearchFilter(isDark)}
-                {this.renderFetchedVideos(isDark)}
-              </ResponsiveContainer>
-            </>
-          )
-        }}
-      </AppContext.Consumer>
-    )
+    switch (responseStatus) {
+      case apiFetchStatus.inProgress:
+        return <>{this.renderLoadingView()}</>
+      case apiFetchStatus.success:
+        return <>{this.renderHomePage()}</>
+      case apiFetchStatus.failure:
+        return <>{this.renderFailureView()}</>
+      default:
+        return null
+    }
   }
 }
 

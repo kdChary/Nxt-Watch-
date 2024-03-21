@@ -3,9 +3,13 @@ import styled from 'styled-components'
 
 export const BannerContainer = styled.div`
   width:100%
-  height: 153px;
+  height: 5vh;
   padding: 23px;
   background-color: #ffffff;
+  @media screen and (min-width: 425px){
+      background-image: url('https://assets.ccbp.in/frontend/react-js/nxt-watch-banner-bg.png');
+      background-size: cover;
+  }
 `
 export const LogoCard = styled.div`
   display: flex;
