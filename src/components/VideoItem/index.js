@@ -8,6 +8,7 @@ import {
   ItemDetailsCard,
   VideoText,
   VideoDetailsList,
+  DetailsContainer,
 } from './styledVideoItem'
 
 const VideoItem = props => {
@@ -25,34 +26,39 @@ const VideoItem = props => {
   const publishedDate = formatDistanceToNow(new Date(publishedAt), {
     addSuffix: false,
   })
-  const modifyDate = publishedDate.split(' ').slice(1, publishedDate.length)
-  const newDate = `${modifyDate[0]} ${modifyDate[1]}`
-  //   console.log(modifyDate)
+  //   const modifyDate = publishedDate.split(' ').slice(1, publishedDate.length)
+  //   const newDate = `${modifyDate[0]} ${modifyDate[1]}`
+  //   //   console.log(modifyDate)
 
   return (
     <LinkItem to={`/videos/${id}`}>
       <VideoListItem dark={isDark}>
         <Image thumb src={thumbnailUrl} alt="video thumbnail" />
+
         <ItemDetailsCard>
-          <Image src={profileUrl} alt="channel logo" />
-          <div>
+          <DetailsContainer>
+            <Image src={profileUrl} alt="channel logo" />
+
             <VideoText dark={isDark} main>
               {title}
             </VideoText>
-            <ItemDetailsCard>
-              <VideoText dark={isDark}>{channelName}</VideoText>
-              <VideoDetailsList>
-                <VideoText dark={isDark} sub>
-                  <BsDot size="21" />
-                  {views}
-                </VideoText>
-                <VideoText dark={isDark} sub>
-                  <BsDot size="21" />
-                  {newDate} ago
-                </VideoText>
-              </VideoDetailsList>
-            </ItemDetailsCard>
-          </div>
+          </DetailsContainer>
+
+          <ItemDetailsCard sub>
+            <VideoText dark={isDark}>{channelName}</VideoText>
+
+            <VideoDetailsList>
+              <VideoText dark={isDark} sub>
+                <BsDot size="21" />
+                {views}
+              </VideoText>
+
+              <VideoText dark={isDark} sub>
+                <BsDot size="21" />
+                {publishedDate}
+              </VideoText>
+            </VideoDetailsList>
+          </ItemDetailsCard>
         </ItemDetailsCard>
       </VideoListItem>
     </LinkItem>

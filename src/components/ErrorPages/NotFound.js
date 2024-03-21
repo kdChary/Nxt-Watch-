@@ -25,10 +25,10 @@ const NotFound = () => (
           <ResponsiveSection>
             <Sidebar />
             <ErrorPageContainer dark={isDark}>
-              <ErrorImg src={imageUrl} alt="Not Found" />
+              <ErrorImg src={imageUrl} alt="not found" />
               <ErrorHeading dark={isDark}>Page Not Found</ErrorHeading>
               <ErrorText>
-                We are sorry, the page you requested could not be found
+                We are sorry, the page you requested could not be found.
               </ErrorText>
             </ErrorPageContainer>
           </ResponsiveSection>

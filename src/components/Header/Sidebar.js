@@ -124,12 +124,12 @@ const Sidebar = () => (
               <NavImg
                 dp
                 src="https://assets.ccbp.in/frontend/react-js/nxt-watch-linked-in-logo-img.png"
-                alt="linkedin logo"
+                alt="linked in logo"
               />
             </SocialIconsCard>
 
-            <SideText main dark={isDark}>
-              Enjoy! Now to see your channels and recommendations
+            <SideText dark={isDark}>
+              Enjoy! Now to see your channels and recommendations!
             </SideText>
           </SocialSection>
         </SideNavbar>

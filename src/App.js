@@ -1,5 +1,5 @@
-import {Component} from 'react' // Redirect
-import {Route, Switch} from 'react-router-dom'
+import {Component} from 'react' //
+import {Route, Switch, Redirect} from 'react-router-dom'
 
 import AppContext from './context/AppContext'
 
@@ -9,8 +9,8 @@ import ProtectedRoute from './components/ProtectedRoute'
 import Home from './components/HomePage'
 import NotFound from './components/ErrorPages/NotFound'
 
-// TODO: Logout PopUp sm Misbehaving.
-// TODO: add Side bar .
+// TODO: Add redirect in not-found.
+// TODO: move banner to Home.
 
 class App extends Component {
   state = {isDark: false, activeTab: 'HOME', savedVideosList: []}
@@ -38,8 +38,8 @@ class App extends Component {
         <Switch>
           <Route exact path="/login" component={LoginForm} />
           <ProtectedRoute exact path="/" component={Home} />
-          <ProtectedRoute exact path="/not-found" component={NotFound} />
-          {/* <Redirect to="/not-found" component={NotFound} /> */}
+          <ProtectedRoute exact path="/bad-path" component={NotFound} />
+          <Redirect to="/not-found" component={NotFound} />
         </Switch>
       </AppContext.Provider>
     )

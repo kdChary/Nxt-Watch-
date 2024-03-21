@@ -12,8 +12,15 @@ export const VideoListItem = styled.li`
   flex-direction: ${props => !props.sub && 'column'};
   justify-content: space-around;
   //   align-items: stretch;
+  margin-bottom: 11px;
   padding: 0;
   background-color: transparent;
+  @media screen and (min-width: 768px) {
+    // border: dashed 2px #4fff54;
+    width: 275px;
+    height: 295px;
+    margin: 5px;
+  }
 `
 
 export const Image = styled.img`
@@ -25,30 +32,39 @@ export const Image = styled.img`
 `
 
 export const ItemDetailsCard = styled.div`
-  display: flex;
-  padding: 9px;
+  display: ${props => props.sub && 'flex'};
+  justify-content: ${props => props.sub && 'space-around'};
+  padding: ${props => props.sub && '9px'};
+  width: ${props => props.sub && '95%'};
+  margin-left: ${props => props.sub && 'auto'};
   //   border: solid 1px #303030;
 `
 
 export const VideoText = styled.p`
-  font-size: ${props => (props.main ? '15px' : '11px')};
+  font-size: ${props => (props.main ? '13px' : '11px')};
   font-family: 'Roboto';
   font-weight: 600;
   color: ${props => (props.dark ? '#cccccc' : '#424242')};
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
   @media screen and (min-width: 768px) {
     font-size: ${props => (props.main ? '17px' : '13px')};
   }
 `
 
 export const VideoDetailsList = styled.ul`
-  width: 70%;
+  //   width: 90%;
   display: flex;
-  //   padding-left: 0;
+  padding-left: 0;
   list-style-type: disc;
   justify-content: space-around;
   align-items: center;
-  list
+  //   border: solid 1px #303ff0;
+`
+
+export const DetailsContainer = styled.div`
+  width: 100%;
+  display: flex;
 `

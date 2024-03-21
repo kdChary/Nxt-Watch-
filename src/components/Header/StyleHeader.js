@@ -12,6 +12,7 @@ export const LinkItem = styled(Link)`
 export const Navbar = styled.nav`
   height: 10vh;
   width: 100%;
+  position: sticky;
   border-bottom: ${props => !props.dark && 'solid 2.6px #94a3b8'};
   background-color: ${props => (props.dark ? '#212121' : '#ffffff')};
   display: flex;
@@ -23,7 +24,7 @@ export const Navbar = styled.nav`
 //  Side bar styling..
 
 export const SideNavbar = styled(Navbar)`
-  min-height: 100vh;
+  height: 90vh;
   width: 30vw;
   position: sticky;
   border: none;
@@ -31,6 +32,9 @@ export const SideNavbar = styled(Navbar)`
   padding: 23px 0;
   @media screen and (max-width: 767px) {
     display: none;
+  }
+  @media screen and (min-width: 992px) {
+    width: 25vw;
   }
 `
 export const SocialSection = styled.div`
@@ -49,9 +53,10 @@ export const SideText = styled.p`
 `
 export const SocialIconsCard = styled.div`
   display: flex;
-  width: 70%;
+  width: 103px;
   justify-content: space-between;
 `
+// Side bar styling done
 
 export const NavImg = styled.img`
   width: ${props => (props.dp ? '27px' : '76px')};

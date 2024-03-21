@@ -139,7 +139,7 @@ const Header = props => {
       {close => (
         <PopLogoutCard pop dark={isDark}>
           <PopupText dark={isDark} logout>
-            Are you sure you want to logout?
+            Are you sure, you want to logout?
           </PopupText>
 
           <PopBtnsCard>
@@ -166,12 +166,19 @@ const Header = props => {
     >
       {close => (
         <PopLogoutCard pop dark={isDark}>
-          <ModelLogoOutBtn outline type="button" onClick={close}>
-            Cancel
-          </ModelLogoOutBtn>
-          <ModelLogoOutBtn type="button" onClick={onClickLogout}>
-            Confirm
-          </ModelLogoOutBtn>
+          <PopupText dark={isDark} logout>
+            Are you sure, you want to logout?
+          </PopupText>
+
+          <PopBtnsCard>
+            <ModelLogoOutBtn outline type="button" onClick={close}>
+              Cancel
+            </ModelLogoOutBtn>
+
+            <ModelLogoOutBtn type="button" onClick={onClickLogout}>
+              Confirm
+            </ModelLogoOutBtn>
+          </PopBtnsCard>
         </PopLogoutCard>
       )}
     </Popup>
@@ -191,7 +198,12 @@ const Header = props => {
         <OptnContainer>
           <NavOptionsList>
             <NavOptionItem>
-              <NavOptnBtn type="button" dark={isDark} onClick={changeTheme}>
+              <NavOptnBtn
+                type="button"
+                dark={isDark}
+                onClick={changeTheme}
+                data-testid="theme"
+              >
                 {isDark ? <FiSun /> : <IoIosMoon />}
               </NavOptnBtn>
             </NavOptionItem>

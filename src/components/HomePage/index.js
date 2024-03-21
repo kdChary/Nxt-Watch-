@@ -9,6 +9,7 @@ import VideoItem from '../VideoItem'
 import FailureView from '../ErrorPages/FailureView'
 import EmptySearchResults from '../ErrorPages/EpmtySearchResults'
 import AppContext from '../../context/AppContext'
+import Sidebar from '../Header/Sidebar'
 
 import {
   SearchCard,
@@ -17,6 +18,7 @@ import {
   ResponsiveContainer,
   VideosList,
   LoaderView,
+  Container,
 } from './styledHome'
 
 const apiFetchStatus = {
@@ -172,11 +174,14 @@ class Home extends Component {
         return (
           <>
             <Header />
-            <ResponsiveContainer dark={isDark}>
-              <Banner />
-              {this.renderSearchFilter(isDark)}
-              {this.renderFetchedVideos(isDark)}
-            </ResponsiveContainer>
+            <Container dark={isDark} data-testid="home">
+              <Sidebar />
+              <ResponsiveContainer dark={isDark}>
+                <Banner />
+                {this.renderSearchFilter(isDark)}
+                {this.renderFetchedVideos(isDark)}
+              </ResponsiveContainer>
+            </Container>
           </>
         )
       }}
