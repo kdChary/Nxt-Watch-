@@ -115,6 +115,7 @@ class Home extends Component {
     return (
       <SearchCard dark={isDark}>
         <FilterInput
+          dark={isDark}
           type="search"
           value={searchInput}
           placeholder="Search"
