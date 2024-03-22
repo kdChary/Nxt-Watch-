@@ -12,7 +12,7 @@ import Gaming from './components/GamingPage'
 import NotFound from './components/ErrorPages/NotFound'
 
 // TODO: Add redirect in not-found.
-// TODO: move banner to Home.
+// TODO: move banner to Home and adjust home styling.
 
 class App extends Component {
   state = {isDark: false, activeTab: 'HOME', savedVideosList: []}

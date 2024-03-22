@@ -7,7 +7,7 @@ import Header from '../Header/Header'
 import FailureView from '../ErrorPages/FailureView'
 import AppContext from '../../context/AppContext'
 import Sidebar from '../Header/Sidebar'
-// import TrendingItem from '../TrendingItem'
+import GamingItem from '../GamingItem'
 
 import {
   ResponsivePage,
@@ -37,10 +37,7 @@ class Gaming extends Component {
   }
 
   modifyFetchedData = data => ({
-    channelName: data.channel.name,
-    profileUrl: data.channel.profile_image_url,
     id: data.id,
-    publishedAt: data.published_at,
     thumbnailUrl: data.thumbnail_url,
     title: data.title,
     views: data.view_count,
@@ -60,13 +57,13 @@ class Gaming extends Component {
 
     if (response.ok) {
       const data = await response.json()
-      //   const readableData = data.videos.map(video =>
-      //     this.modifyFetchedData(video),
-      //   )
+      const readableData = data.videos.map(video =>
+        this.modifyFetchedData(video),
+      )
       console.log(data)
       this.setState({
         responseStatus: apiFetchStatus.success,
-        // gamingData: readableData,
+        gamingData: readableData,
       })
     } else {
       this.setState({responseStatus: apiFetchStatus.failure})
@@ -90,9 +87,9 @@ class Gaming extends Component {
     </LoaderContainer>
   )
 
-  renderTrendingPage = isDark => {
-    // const {gamingData} = this.state
-    console.log('dinesh')
+  renderGamingPage = isDark => {
+    const {gamingData} = this.state
+    // console.log('dinesh')
 
     return (
       <ResponsivePage dark={isDark}>
@@ -105,10 +102,9 @@ class Gaming extends Component {
         </GamingHeader>
 
         <GamingVideosList>
-          {/* {gamingData.map(video => (
-            <TrendingItem key={video.id} videoData={video} isDark={isDark} />
-          ))} */}{' '}
-          Map GamingData !!!
+          {gamingData.map(video => (
+            <GamingItem key={video.id} videoData={video} isDark={isDark} />
+          ))}
         </GamingVideosList>
       </ResponsivePage>
     )
@@ -122,7 +118,7 @@ class Gaming extends Component {
         return <>{this.renderLoadingView(isDark)}</>
 
       case apiFetchStatus.success:
-        return <>{this.renderTrendingPage(isDark)}</>
+        return <>{this.renderGamingPage(isDark)}</>
 
       case apiFetchStatus.failure:
         return <>{this.renderFailureView()}</>

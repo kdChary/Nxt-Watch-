@@ -53,8 +53,14 @@ export const GamingVideosList = styled.ul`
   scroll-behavior: smooth;
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-around;
+  align-items: flex-start;
   width: 100%;
-  //   border: solid 3px #4f44f4;
+  flex-wrap: wrap;
+  overflow: auto;
+  scroll-behavior: auto;
+
+  @media (min-width: 375px) {
+    justify-content: center;
+  }
 `
