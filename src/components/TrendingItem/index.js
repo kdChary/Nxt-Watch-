@@ -8,6 +8,9 @@ import {
   ItemContainer,
   Text,
   ChannelDetails,
+  ChannelViewsData,
+  ViewsData,
+  ViewsText,
 } from './style'
 
 const TrendingItem = props => {
@@ -31,12 +34,20 @@ const TrendingItem = props => {
             <Thumbnail sm src={profileUrl} alt="channel logo" />
             <Text dark={isDark}>{title}</Text>
           </ChannelDetails>
-          <div>
-            <p>{channelName}</p>
-            <BsDot />
-            <p>{views}</p>
-            <p>{formatDistanceToNow(new Date(publishedAt))}</p>
-          </div>
+
+          <ChannelViewsData>
+            <ViewsText dark={isDark}>{channelName}</ViewsText>
+
+            <ViewsData>
+              <BsDot size="28" color={isDark ? '#cbd5e1' : '#475569'} />
+              <ViewsText dark={isDark}>{views}</ViewsText>
+
+              <BsDot size="28" color={isDark ? '#cbd5e1' : '#475569'} />
+              <ViewsText dark={isDark}>
+                {formatDistanceToNow(new Date(publishedAt))}
+              </ViewsText>
+            </ViewsData>
+          </ChannelViewsData>
         </ItemContainer>
       </ListItem>
     </LinkItem>
