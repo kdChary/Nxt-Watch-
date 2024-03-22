@@ -143,7 +143,7 @@ class LoginForm extends Component {
       <>
         <WebsiteLogo src={logoUrl} alt="website logo" />
 
-        <Form onSubmit={this.onFormSubmit} id="loginForm">
+        <Form onSubmit={this.onFormSubmit} id="loginForm" name="loginForm">
           {this.renderUsernameInput(isDark)}
           {this.renderPasswordInput(isDark)}
           {this.renderShowPassword(isDark)}
