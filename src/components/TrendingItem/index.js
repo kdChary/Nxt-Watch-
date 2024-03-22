@@ -36,15 +36,17 @@ const TrendingItem = props => {
           </ChannelDetails>
 
           <ChannelViewsData>
-            <ViewsText dark={isDark}>{channelName}</ViewsText>
+            <ViewsText dark={isDark} sm>
+              {channelName}
+            </ViewsText>
 
             <ViewsData>
               <BsDot size="28" color={isDark ? '#cbd5e1' : '#475569'} />
-              <ViewsText dark={isDark}>{views}</ViewsText>
+              <ViewsText dark={isDark}>{views} views</ViewsText>
 
               <BsDot size="28" color={isDark ? '#cbd5e1' : '#475569'} />
               <ViewsText dark={isDark}>
-                {formatDistanceToNow(new Date(publishedAt))}
+                {formatDistanceToNow(new Date(publishedAt), {addSuffix: false})}
               </ViewsText>
             </ViewsData>
           </ChannelViewsData>

@@ -14,6 +14,48 @@ export const Dot = styled(BsDot)`
   display: ${props => props.hide && 'none'};
 `
 
+// Styling containers
+export const ItemContainer = styled.div`
+  width: 96%;
+  display: flex;
+  flex-direction: column;
+  @media screen and (min-width: 576px) {
+    width: 45%;
+    justify-content: flex-start;
+    align-self: flex-start;
+  }
+`
+export const ChannelDetails = styled.div`
+  display: flex;
+  flex-direction: row;
+  // justify-content: space-around;
+  align-items: center;
+  //   border: solid 1px #4f4eff;
+  @media screen and (min-width: 576px) {
+    margin: 0;
+    // align-items: flex-start;
+    justify-content: flex-start;
+  }
+`
+export const ChannelViewsData = styled(ChannelDetails)`
+  justify-content: flex-end;
+  @media screen and (min-width: 576px) {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 0;
+  }
+`
+export const ViewsData = styled(ChannelDetails)`
+  width: 75%;
+  justify-content: center;
+  @media screen and (min-width: 576px) {
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 0;
+  }
+`
+
 // styling List items..
 export const ListItem = styled.li`
   width: 100%;
@@ -24,38 +66,6 @@ export const ListItem = styled.li`
   @media screen and (min-width: 576px) {
     flex-direction: row;
     justify-content: space-around;
-  }
-`
-
-// Styling containers
-export const ItemContainer = styled.div`
-  width: 96%;
-  display: flex;
-  flex-direction: column;
-  @media screen and (min-width: 576px) {
-    width: 45%;
-    justify-content: flex-start;
-  }
-`
-export const ChannelDetails = styled.div`
-  display: flex;
-  flex-direction: row;
-  //   justify-content: space-around;
-  align-items: center;
-  //   border: solid 1px #4f4eff;
-`
-export const ChannelViewsData = styled(ChannelDetails)`
-  justify-content: flex-end;
-  @media screen and (min-width: 576px) {
-    flex-direction: column;
-    align-items: center;
-  }
-`
-export const ViewsData = styled(ChannelDetails)`
-  width: 75%;
-  justify-content: center;
-  @media screen and (min-width: 576px) {
-    justify-content: flex-start;
   }
 `
 
@@ -73,10 +83,12 @@ export const Text = styled.p`
   font-size: 11px;
   font-weight: 600;
   line-height: 1.5;
+  margin: 0;
   margin-left: 6px;
   color: ${props => (props.dark ? '#e2e8f0' : '#231f20')};
   @media screen and (min-width: 576px) {
     font-size: 15px;
+    // margin-left: 9px;
   }
 `
 export const ViewsText = styled(Text)`
@@ -84,4 +96,7 @@ export const ViewsText = styled(Text)`
   margin-left: 0;
   margin-right: 15px;
   color: ${props => (props.dark ? '#cbd5e1' : '#475569')};
+  @media screen and (min-width: 576px) {
+    margin-left: ${props => props.sm && '9px'};
+  }
 `

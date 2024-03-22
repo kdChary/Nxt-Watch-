@@ -63,7 +63,7 @@ class Trending extends Component {
       const readableData = data.videos.map(video =>
         this.modifyFetchedData(video),
       )
-      console.log(readableData)
+      //   console.log(readableData)
       this.setState({
         responseStatus: apiFetchStatus.success,
         trendingData: readableData,
