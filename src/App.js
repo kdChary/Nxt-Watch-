@@ -9,6 +9,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 import Home from './components/HomePage'
 import Trending from './components/TrendingPage'
 import Gaming from './components/GamingPage'
+import VideoItemDetails from './components/VideoItemDetails'
 import NotFound from './components/ErrorPages/NotFound'
 
 // TODO: Add redirect in not-found.
@@ -42,8 +43,13 @@ class App extends Component {
           <ProtectedRoute exact path="/" component={Home} />
           <ProtectedRoute exact path="/trending" component={Trending} />
           <ProtectedRoute exact path="/gaming" component={Gaming} />
+          <ProtectedRoute
+            exact
+            path="/videos/:id"
+            component={VideoItemDetails}
+          />
           <ProtectedRoute exact path="/bad-path" component={NotFound} />
-          <Redirect to="/not-found" component={NotFound} />
+          <Redirect to="/bad-path" component={NotFound} />
         </Switch>
       </AppContext.Provider>
     )

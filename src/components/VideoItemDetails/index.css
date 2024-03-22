@@ -1,0 +1,26 @@
+.react-player-large {
+  width: 100%;
+  padding: 5px;
+  display: none;
+}
+.react-player-medium {
+  width: 100%;
+  display: none;
+  flex-grow: 2;
+}
+.react-player-small {
+  width: 100%;
+  display: flex;
+  margin: 0;
+}
+@media screen and (min-width: 768px) {
+  .react-player-large {
+    display: flex;
+  }
+  .react-player-small {
+    display: none;
+  }
+  .react-player-medium {
+    display: none;
+  }
+}
